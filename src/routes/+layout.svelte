@@ -1,5 +1,6 @@
 <script lang="ts">
-	import '../app.postcss';
+  import Header from "../components/Header.svelte";
+  import "../app.postcss";
 </script>
 
 <slot />

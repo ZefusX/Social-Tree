@@ -1,50 +1,135 @@
 <script>
-  import { Avatar } from "@skeletonlabs/skeleton";
+  // @ts-nocheck
+
+  import TreePreview from "./../components/TreePreview.svelte";
+  import Footer from "./../components/Footer.svelte";
+  import IconCrop from "./../components/icons/icon_crop.svelte";
+  import IconBolt from "./../components/icons/icon_bolt.svelte";
+  import IconKeyboard from "../components/icons/icon_keyboard.svelte";
+  import IconList from "../components/icons/icon_list.svelte";
+  import Header from "../components/Header.svelte";
+  import IconFree from "../components/icons/icon_free.svelte";
+  import IconUser from "../components/icons/icon_user.svelte";
+
+  import svelteTilt from "vanilla-tilt-svelte";
+
+  let exampleUsername = "Pedro Sancho";
 </script>
 
-<main
-  class="h-full w-full flex-col justify-center content-center items-center mt-16"
->
-  <div class="flex flex-col justify-center items-center content-center gap-2">
-    <Avatar
-      initials="Tk"
-      background="bg-primary-500"
-      src="https://media.discordapp.net/attachments/760899889999249409/1249711167564288071/image.jpg?ex=66684bb8&is=6666fa38&hm=84194e0af87d446e21782c97890c4f5ff23c65ffb32b5b8f23975b700fc5490c&=&format=webp&width=351&height=468"
-      class="w-24 h-24"
-    />
-    <h1 class="text-2xl">@théo</h1>
-    <div class="w-full flex justify-center gap-2">
-      <span class="badge variant-ghost">&#x1F4BB; développeur</span>
-      <span class="badge variant-filled-surface">&#x1F526; explorateur</span>
-      <span class="badge variant-filled-tertiary">&#x1F697; passionné auto</span
+<Header />
+<div class="h-screen w-full grow flex-col flex mt-24 text-center items-center">
+  <h1 class="text-8xl font-extrabold">
+    social <span class="text-primary-600">tree.</span>
+  </h1>
+  <p class="text-xl">all your social networks in one place.</p>
+  <div class="flex gap-6 m-6">
+    <a href="/product">
+      <button class="btn variant-filled-primary">Try it now</button>
+    </a>
+    <a href="/about">
+      <button class="btn variant-outline-primary">More infos</button>
+    </a>
+  </div>
+
+  <div class="flex py-20 w-1/2">
+    <div
+      class="grid grid-cols-1 grid-rows-6 lg:grid-cols-3 gap-4 lg:grid-rows-3"
+    >
+      <div
+        class="p-6 border border-primary-600 rounded-[12px] flex flex-col gap-1 col-span-2 lg:col-span-1 row-span-1 bg-primary-900"
       >
+        <IconBolt />
+        <span class="text-[16px]">Fast</span>
+        <span class="text-[28px] font-bold">Creation time</span>
+      </div>
+      <div
+        class="p-6 border border-secondary-600 rounded-[12px] flex flex-col gap-1 col-span-2 lg:col-span-1 row-span-1 bg-secondary-900"
+      >
+        <IconCrop />
+        <span class="text-[16px]">Starting from</span>
+        <span class="text-[28px] font-bold">Scratch</span>
+      </div>
+      <div
+        class="p-6 border border-primary-600 rounded-[12px] flex flex-col gap-1 col-span-2 lg:col-span-1 row-span-1 lg:row-span-2 bg-primary-900"
+      >
+        <IconList />
+        <span class="text-[16px]">All your infos</span>
+        <span class="text-[28px] font-bold">In one place</span>
+      </div>
+      <div
+        class="p-6 border border-secondary-600 rounded-[12px] flex flex-col gap-1 col-span-2 row-span-1 bg-secondary-900"
+      >
+        <IconKeyboard />
+        <span class="text-[16px]">Simple</span>
+        <span class="text-[28px] font-bold">And easy</span>
+      </div>
+      <div
+        class="p-6 border border-primary-600 rounded-[12px] flex flex-col gap-1 col-span-2 row-span-1 bg-primary-900"
+      >
+        <IconFree />
+        <span class="text-[16px]">Free</span>
+        <span class="text-[28px] font-bold">Forever</span>
+      </div>
+      <div
+        class="p-6 border border-secondary-600 rounded-[12px] flex flex-col gap-1 col-span-2 lg:col-span-1 row-span-1 bg-secondary-900"
+      >
+        <IconUser />
+        <span class="text-[16px]">Create</span>
+        <span class="text-[28px] font-bold">Without needing an account</span>
+      </div>
     </div>
-    <p class="text-gray-500 text-xl">
-      voici mes réseaux et mes informations utiles.
-    </p>
   </div>
-  <hr class="mx-24 p-6 mt-6" />
-  <div class="flex flex-col justify-center items-center content-center gap-3">
-    <a href="https://github.com/ZefusX">
-      <button type="button" class="btn variant-ghost w-60"> GitHub </button>
-    </a>
-    <a href="https://www.youtube.com/channel/UCjy7QFOesJI7kP5vjy1bEbw">
-      <button type="button" class="btn variant-filled w-60"> YouTube </button>
-    </a>
-    <a href="https://discord.com/users/451778477700677642">
-      <button type="button" class="btn variant-filled-primary w-60">
-        Discord
-      </button>
-    </a>
-  </div>
-  <div class="flex justify-center mt-16">
-    <p class="text-gray-500 text-l">
-      &#x1F5A4; website made with love by <a
-        href="https://github.com/ZefusX"
-        class="underline"
-        target="_blank">@zefusX</a
+  <div class="bg-tertiary-900 p-6 w-full">
+    <div class="mt-6 flex lg:flex-row flex-col">
+      <div class="flex flex-col ml-6">
+        <h2 class="text-5xl font-bold">
+          make your social tree in litteraly 5 seconds
+        </h2>
+        <p class="text-xl font-semibold text-primary-100">
+          Easy, beautiful and fully customizable
+        </p>
+        <div>
+          <input
+            type="text"
+            name="username"
+            placeholder="username"
+            class="input rounded-xl w-48 h-[40px] mt-4"
+            bind:value={exampleUsername}
+          />
+        </div>
+        <p class="font-regular mt-1">Try changing the name!</p>
+      </div>
+      <div
+        class="bg-surface-900 rounded-3xl px-8 py-12 flex w-fit mx-auto justify-center mt-2"
+        use:svelteTilt={{
+          max: 35,
+          startX: 0,
+          startY: 0,
+          perspective: 1000,
+          scale: 1,
+          speed: 100,
+          transition: true,
+          axis: null,
+          reset: true,
+        }}
       >
-      on github.
-    </p>
+        <TreePreview
+          username={exampleUsername}
+          ppInitials="PS"
+          description="tacos lover"
+          buttons={[
+            { text: "Instagram", link: "/" },
+            { text: "Tiktok", link: "/" },
+            { text: "Personnal website", link: "/" },
+          ]}
+        />
+      </div>
+    </div>
+    <div class="mt-4">
+      <p class="text-xl font-bold">
+        No more time spending on looking for your friends social medias accounts
+      </p>
+    </div>
   </div>
-</main>
+  <Footer />
+</div>
