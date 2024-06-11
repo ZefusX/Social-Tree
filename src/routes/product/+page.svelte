@@ -11,9 +11,23 @@
   };
 
   let buttons = [{ text: "button1", link: "" }];
+  let tag = [{ text: "" }];
 
   function closeAlert() {
     alertVisible = false;
+  }
+
+  function addTag() {
+    if (tag.length < 9) {
+      tag = [...tag, { text: "" }];
+      console.log(tag);
+    }
+  }
+
+  function removeTag(index: any) {
+    if (tag.length > 0) {
+      tag = tag.filter((_, i) => i !== index);
+    }
   }
 
   function addButton() {
@@ -34,6 +48,10 @@
       text: btn.text,
       link: btn.link,
     }));
+    const tagData = tag.map((t) => ({
+      text: t.text,
+    }));
+    console.log(tagData);
 
     const options = {
       method: "POST",
@@ -45,6 +63,7 @@
         ppInitials,
         description,
         buttons: buttonData,
+        tag: tagData,
       }),
     };
 
@@ -76,6 +95,7 @@
       ppInitials={info.ppInitials}
       description={info.description}
       {buttons}
+      {tag}
     />
   </div>
   <div class="w-full flex justify-center content-center items-center">
@@ -94,7 +114,7 @@
         <input
           type="text"
           name="initials"
-          placeholder="username initials"
+          placeholder="username initials or image link"
           class="input rounded-xl"
           bind:value={info.ppInitials}
         />
@@ -128,11 +148,41 @@
           >
         </div>
       {/each}
-
-      <button type="button" class="btn variant-filled" on:click={addButton}>
-        Add Button
-      </button>
+      {#each tag as t, index}
+        <div class="flex gap-2">
+          <input
+            type="text"
+            placeholder={`Tag ${index + 1} text`}
+            bind:value={t.text}
+            class="input rounded-xl"
+          />
+          <button
+            class="btn variant-filled-secondary rounded-xl"
+            type="button"
+            on:click={() => removeTag(index)}>Remove</button
+          >
+        </div>
+      {/each}
+      <div class="flex gap-2 w-full">
+        <button
+          type="button"
+          class="btn variant-filled w-1/2"
+          on:click={addTag}
+        >
+          Add Tag
+        </button>
+        <button
+          type="button"
+          class="btn variant-filled w-1/2"
+          on:click={addButton}
+        >
+          Add Button
+        </button>
+      </div>
       <button type="submit" class="btn variant-filled"> Submit </button>
+      <p class="text-warning-500">
+        Profile images will be shown once the page is generated
+      </p>
     </form>
   </div>
 </main>

@@ -13,7 +13,7 @@
 
   import svelteTilt from "vanilla-tilt-svelte";
 
-  let exampleUsername = "Pedro Sancho";
+  let exampleUsername = "@zefus";
 </script>
 
 <Header />
@@ -115,13 +115,14 @@
       >
         <TreePreview
           username={exampleUsername}
-          ppInitials="PS"
-          description="tacos lover"
+          ppInitials="ZE"
+          description="your average bro"
           buttons={[
             { text: "Instagram", link: "/" },
             { text: "Tiktok", link: "/" },
             { text: "Personnal website", link: "/" },
           ]}
+          tag={[{ text: "🔦 explorer" }, { text: "🚗 car enthusiast" }]}
         />
       </div>
     </div>

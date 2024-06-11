@@ -2,9 +2,19 @@
   import { Avatar } from "@skeletonlabs/skeleton";
 
   export let username = "";
-  export let ppInitials = "";
+  export let ppInitials: string;
   export let description = "";
   export let buttons: any[] = [];
+  export let tag: any[] = [];
+
+  let ppImage = false;
+  if (ppInitials.includes("http")) {
+    ppImage = true;
+  } else {
+    ppImage = false;
+  }
+  console.log(ppInitials);
+  console.log(ppImage);
 </script>
 
 <main
@@ -12,22 +22,30 @@
 >
   <div class="flex flex-col justify-center items-center content-center gap-2">
     <Avatar
-      initials={ppInitials}
+      initials={ppImage ? "" : ppInitials}
+      src={ppImage ? ppInitials : ""}
       background="bg-primary-500"
       class="w-24 h-24"
     />
     <h1 class="text-2xl">{username}</h1>
     <div class="w-full flex justify-center gap-2">
-      <!-- <span class="badge variant-ghost">&#x1F4BB; développeur</span>
-      <span class="badge variant-filled-surface">&#x1F526; explorateur</span>
-      <span class="badge variant-filled-tertiary">&#x1F697; passionné auto</span
-      > -->
+      {#each tag as t, index}
+        {#if index % 3 == 0}
+          <span class="badge variant-ghost">{t.text}</span>
+        {:else if index % 3 == 1}
+          <span class="badge variant-filled-surface">{t.text}</span>
+        {:else}
+          <span class="badge variant-filled-tertiary">{t.text}</span>
+          <!-- <span class="badge variant-filled-surface">&#x1F526; explorateur</span> -->
+        {/if}
+        <!-- <span class="badge variant-filled-tertiary">&#x1F697; passionné auto</span -->
+      {/each}
     </div>
     <p class="text-gray-500 text-xl">
       {description}
     </p>
   </div>
-  <hr class="mx-24 p-6 mt-6" />
+  <hr class="mx-2 p-6 mt-6" />
   <div class="flex flex-col justify-center items-center content-center gap-3">
     {#each buttons as button, index}
       <a href={button.link}>

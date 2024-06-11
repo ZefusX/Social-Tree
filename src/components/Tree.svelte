@@ -5,6 +5,14 @@
   export let ppInitials: string;
   export let description: string;
   export let buttons: { text: string; link: string }[] = [];
+  export let tag: { text: string }[] = [];
+
+  let ppImage = false;
+  if (ppInitials.includes("http")) {
+    ppImage = true;
+  } else {
+    ppImage = false;
+  }
 </script>
 
 <main
@@ -12,16 +20,24 @@
 >
   <div class="flex flex-col justify-center items-center content-center gap-2">
     <Avatar
-      initials={ppInitials}
+      initials={ppImage ? "" : ppInitials}
+      src={ppImage ? ppInitials : ""}
       background="bg-primary-500"
       class="w-24 h-24"
     />
     <h1 class="text-2xl">{username}</h1>
     <div class="w-full flex justify-center gap-2">
-      <!-- <span class="badge variant-ghost">&#x1F4BB; développeur</span>
-      <span class="badge variant-filled-surface">&#x1F526; explorateur</span>
-      <span class="badge variant-filled-tertiary">&#x1F697; passionné auto</span
-      > -->
+      {#each tag as t, index}
+        {#if index % 3 == 0}
+          <span class="badge variant-ghost">{t.text}</span>
+        {:else if index % 3 == 1}
+          <span class="badge variant-filled-surface">{t.text}</span>
+        {:else}
+          <span class="badge variant-filled-tertiary">{t.text}</span>
+          <!-- <span class="badge variant-filled-surface">&#x1F526; explorateur</span> -->
+        {/if}
+        <!-- <span class="badge variant-filled-tertiary">&#x1F697; passionné auto</span -->
+      {/each}
     </div>
     <p class="text-gray-500 text-xl">
       {description}

@@ -6,6 +6,7 @@
   const treeInfos: TreeData = data.data;
 
   const buttons = treeInfos.buttons || [];
+  const tag = treeInfos.tag || [];
 </script>
 
 <Tree
@@ -13,4 +14,5 @@
   ppInitials={treeInfos.ppInitials}
   description={treeInfos.description}
   {buttons}
+  {tag}
 />

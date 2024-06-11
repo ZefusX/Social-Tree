@@ -1,18 +1,20 @@
-// Définir une interface pour les boutons
 interface Button {
   text: string;
   link: string;
 }
 
-// Définir une interface pour les données de l'arbre
+interface Tag {
+  text: string;
+}
+
 export interface TreeData {
   username: string;
   ppInitials: string;
   description: string;
   buttons: Button[];
+  tag: Tag[];
 }
 
-// Mettre à jour la fonction getData pour renvoyer TreeData
 async function getData(id: string): Promise<TreeData> {
   const options = {
     method: "GET",
